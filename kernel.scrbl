@@ -2,15 +2,67 @@
 
 @(require (for-label '#%kernel))
 
+
 @title{Documenting @racketmodname{'#%kernel}}
+
+@author+email["Danny Yoo" "dyoo@hashcollision.org"]
 
 The following is an attempt to systematically categorize the variable bindings
 in the @racketmodname['#%kernel] of Racket 5.3.
 
+I pulled out the names with the following snippet:
+@racketblock[
+(define variable-names
+  (let-values ([(variables syntax) (module->exports ''#%kernel)])
+    (map car (cdr (assoc 0 variables)))))
+]
 
 
-@section{Numbers}
+
+@section{Numerics}
 @declare-exporting['#%kernel]
+
+@racket[*]
+@racket[+]
+@racket[-]
+@racket[/]
+@racket[<]
+@racket[<=]
+@racket[=]
+@racket[>]
+@racket[>=]
+@racket[abs]
+@racket[acos]
+@racket[add1]
+@racket[angle]
+
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Lists}
+@racket[append]
+@racket[andmap]
+               
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Paths}
+@racket[absolute-path?]
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Control operators}
+@racket[abort-current-continuation]
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Events}
+
+@racket[alarm-evt]
+@racket[always-evt]
 
 
 
@@ -22,25 +74,8 @@ The following are things I haven't yet categorized yet.
 @(apply itemlist
         ;; These names have been computed by using inspecting-kernel.rkt
         (map (lambda (s) (item (symbol->string s)))
-             '(*
-               +
-               -
-               /
-               <
-               <=
-               =
-               >
-               >=
-               abort-current-continuation
-               abs
-               absolute-path?
-               acos
-               add1
-               alarm-evt
-               always-evt
-               andmap
-               angle
-               append
+             '(
+               
                apply
                arithmetic-shift
                arity-at-least
