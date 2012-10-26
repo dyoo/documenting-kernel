@@ -1,6 +1,14 @@
 #lang scribble/manual
 
-@(require (for-label '#%kernel))
+@(require (for-syntax racket/base)
+          (for-label '#%kernel))
+
+@(define-syntax (racket/tag stx)
+   (syntax-case stx ()
+     [(_ id category ...)
+      ;; For now, ignore the annotated categories
+      (syntax/loc stx
+        (racket id))]))
 
 
 @title{Documenting @racketmodname{'#%kernel}}
@@ -22,49 +30,93 @@ I pulled out the names with the following snippet:
 @section{Numerics}
 @declare-exporting['#%kernel]
 
-@racket[*]
-@racket[+]
-@racket[-]
-@racket[/]
-@racket[<]
-@racket[<=]
-@racket[=]
-@racket[>]
-@racket[>=]
-@racket[abs]
-@racket[acos]
-@racket[add1]
-@racket[angle]
-
-
-
-@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-@section{Lists}
-@racket[append]
-@racket[andmap]
+@racket/tag[* numerics]
+@racket/tag[+ numerics]
+@racket/tag[- numerics]
+@racket/tag[/ numerics]
+@racket/tag[< numerics]
+@racket/tag[<= numerics]
+@racket/tag[= numerics]
+@racket/tag[> numerics]
+@racket/tag[>= numerics]
+@racket/tag[abs numerics trigonometry]
+@racket/tag[acos numerics trigonometry]
+@racket/tag[add1 numerics]
+@racket/tag[angle numerics trigonometry]
+@racket/tag[arithmetic-shift numerics bit-arithmetic]
+@racket/tag[asin numerics trigonometry]
+@racket/tag[atan numerics trigonometry]
+@racket/tag[bitwise-and numerics bit-arithmetic]
+@racket/tag[bitwise-bit-field numerics bit-arithmetic]
+@racket/tag[bitwise-bit-set? numerics bit-arithmetic]
+@racket/tag[bitwise-ior numerics bit-arithmetic]
+@racket/tag[bitwise-not numerics bit-arithmetic]
+@racket/tag[bitwise-xor numerics bit-arithmetic]
                
 
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+@section{Lists}
+@racket/tag[append lists]
+@racket/tag[andmap lists]
+@;; I want to somehow annotate that apply also deals with functions
+@racket/tag[apply lists procedures]
+@racket/tag[assoc lists list-searching]
+@racket/tag[assq lists list-searching]
+@racket/tag[assv lists list-searching]
+
+
+@section{Booleans}
+@racket/tag[boolean? booleans]
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Boxes}
+@racket[box]
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 @section{Paths}
-@racket[absolute-path?]
+@racket/tag[absolute-path? paths]
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @section{Control operators}
-@racket[abort-current-continuation]
+@racket/tag[abort-current-continuation control]
 
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @section{Events}
 
-@racket[alarm-evt]
-@racket[always-evt]
+@racket/tag[alarm-evt events]
+@racket/tag[always-evt events]
 
 
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Procedures}
+
+@racket/tag[arity-at-least procedures arity]
+@racket/tag[arity-at-least-value procedures arity]
+@racket/tag[arity-at-least? procedures arity]
+               
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+@section{Input/Output}
+
+@racket/tag[banner io optional]
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+@section{Syntax}
+
+@racket/tag[bound-identifier=? syntax]
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
@@ -74,28 +126,7 @@ The following are things I haven't yet categorized yet.
 @(apply itemlist
         ;; These names have been computed by using inspecting-kernel.rkt
         (map (lambda (s) (item (symbol->string s)))
-             '(
-               
-               apply
-               arithmetic-shift
-               arity-at-least
-               arity-at-least-value
-               arity-at-least?
-               asin
-               assoc
-               assq
-               assv
-               atan
-               banner
-               bitwise-and
-               bitwise-bit-field
-               bitwise-bit-set?
-               bitwise-ior
-               bitwise-not
-               bitwise-xor
-               boolean?
-               bound-identifier=?
-               box
+             '(               
                box-cas!
                box-immutable
                box?
