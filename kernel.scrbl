@@ -26,6 +26,9 @@ I pulled out the names with the following snippet:
 ]
 
 
+For the purposes of Whalesong or JavaScript evaluation, I don't think I need paths.
+
+
 
 @section{Numerics}
 @declare-exporting['#%kernel]
@@ -52,19 +55,53 @@ I pulled out the names with the following snippet:
 @racket/tag[bitwise-ior numerics bit-arithmetic]
 @racket/tag[bitwise-not numerics bit-arithmetic]
 @racket/tag[bitwise-xor numerics bit-arithmetic]
-               
+@racket/tag[ceiling numerics]
+@racket/tag[complex? numerics]
+
 
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @section{Lists}
-@racket/tag[append lists]
-@racket/tag[andmap lists]
-@;; I want to somehow annotate that apply also deals with functions
+@racket/tag[append lists functions]
+@racket/tag[andmap lists functions]
 @racket/tag[apply lists procedures]
 @racket/tag[assoc lists list-searching]
 @racket/tag[assq lists list-searching]
 @racket/tag[assv lists list-searching]
+@racket/tag[caaaar lists]
+@racket/tag[caaadr lists]
+@racket/tag[caaar lists]
+@racket/tag[caadar lists]
+@racket/tag[caaddr lists]
+@racket/tag[caadr lists]
+@racket/tag[caar lists]
+@racket/tag[cadaar lists]
+@racket/tag[cadadr lists]
+@racket/tag[cadar lists]
+@racket/tag[caddar lists]
+@racket/tag[cadddr lists]
+@racket/tag[caddr lists]
+@racket/tag[cadr lists]
+@racket/tag[car lists]
+@racket/tag[cdaaar lists]
+@racket/tag[cdaadr lists]
+@racket/tag[cdaar lists]
+@racket/tag[cdadar lists]
+@racket/tag[cdaddr lists]
+@racket/tag[cdadr lists]
+@racket/tag[cdar lists]
+@racket/tag[cddaar lists]
+@racket/tag[cddadr lists]
+@racket/tag[cddar lists]
+@racket/tag[cdddar lists]
+@racket/tag[cddddr lists]
+@racket/tag[cdddr lists]
+@racket/tag[cddr lists]
+@racket/tag[cdr lists]
+@racket/tag[cons lists]
+
+
 
 
 @section{Booleans}
@@ -73,18 +110,108 @@ I pulled out the names with the following snippet:
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @section{Boxes}
-@racket[box]
+@racket/tag[box boxes]
+@racket/tag[box-cas! boxes futures]
+@racket/tag[box-immutable boxes immutability]
+@racket/tag[box? boxes]
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Bytes}
+@racket/tag[byte? bytes]
+@racket/tag[bytes bytes]
+@racket/tag[bytes->immutable-bytes bytes]
+@racket/tag[bytes->list bytes]
+@racket/tag[bytes->path bytes]
+@racket/tag[bytes->path-element bytes]
+@racket/tag[bytes->string/latin-1 bytes]
+@racket/tag[bytes->string/locale bytes]
+@racket/tag[bytes->string/utf-8 bytes]
+@racket/tag[bytes-append bytes]
+@racket/tag[bytes-close-converter bytes]
+@racket/tag[bytes-convert bytes]
+@racket/tag[bytes-convert-end bytes]
+@racket/tag[bytes-converter? bytes]
+@racket/tag[bytes-copy bytes]
+@racket/tag[bytes-copy! bytes]
+@racket/tag[bytes-fill! bytes]
+@racket/tag[bytes-length bytes]
+@racket/tag[bytes-open-converter bytes]
+@racket/tag[bytes-ref bytes]
+@racket/tag[bytes-set! bytes]
+@racket/tag[bytes-utf-8-index bytes]
+@racket/tag[bytes-utf-8-length bytes]
+@racket/tag[bytes-utf-8-ref bytes]
+@racket/tag[bytes<? bytes]
+@racket/tag[bytes=? bytes]
+@racket/tag[bytes>? bytes]
+@racket/tag[bytes? bytes]
+
+@section{Characters}
+@racket/tag[char->integer characters]
+@racket/tag[char-alphabetic? characters]
+@racket/tag[char-blank? characters]
+@racket/tag[char-ci<=? characters]
+@racket/tag[char-ci<? characters]
+@racket/tag[char-ci=? characters]
+@racket/tag[char-ci>=? characters]
+@racket/tag[char-ci>? characters]
+@racket/tag[char-downcase characters]
+@racket/tag[char-foldcase characters]
+@racket/tag[char-general-category characters]
+@racket/tag[char-graphic? characters]
+@racket/tag[char-iso-control? characters]
+@racket/tag[char-lower-case? characters]
+@racket/tag[char-numeric? characters]
+@racket/tag[char-punctuation? characters]
+@racket/tag[char-ready? characters]
+@racket/tag[char-symbolic? characters]
+@racket/tag[char-title-case? characters]
+@racket/tag[char-titlecase characters]
+@racket/tag[char-upcase characters]
+@racket/tag[char-upper-case? characters]
+@racket/tag[char-utf-8-length characters]
+@racket/tag[char-whitespace? characters]
+@racket/tag[char<=? characters]
+@racket/tag[char<? characters]
+@racket/tag[char=? characters]
+@racket/tag[char>=? characters]
+@racket/tag[char>? characters]
+@racket/tag[char? characters]
+
 
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 @section{Paths}
 @racket/tag[absolute-path? paths]
+@racket/tag[build-path paths]
+@racket/tag[build-path/convention-type paths]
+@racket/tag[cleanse-path paths]
+@racket/tag[complete-path? paths]
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-@section{Control operators}
+@section{Control operators and continuations}
 @racket/tag[abort-current-continuation control]
+@racket/tag[break-enabled control parameter]
+@racket/tag[break-thread control]
+@racket/tag[call-in-nested-thread control]
+@racket/tag[call-with-composable-continuation control]
+@racket/tag[call-with-continuation-barrier control]
+@racket/tag[call-with-continuation-prompt control]
+@racket/tag[call-with-current-continuation control]
+@racket/tag[call-with-escape-continuation control]
+@racket/tag[call-with-immediate-continuation-mark control]
+@racket/tag[call-with-input-file control io]
+@racket/tag[call-with-output-file control io]
+@racket/tag[call-with-semaphore control]
+@racket/tag[call-with-semaphore/enable-break control]
+@racket/tag[call-with-values control]
+@racket/tag[call/cc control]
+@racket/tag[call/ec control]
+
 
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,7 +220,7 @@ I pulled out the names with the following snippet:
 
 @racket/tag[alarm-evt events]
 @racket/tag[always-evt events]
-
+@racket/tag[choice-evt events]
 
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -102,13 +229,33 @@ I pulled out the names with the following snippet:
 @racket/tag[arity-at-least procedures arity]
 @racket/tag[arity-at-least-value procedures arity]
 @racket/tag[arity-at-least? procedures arity]
+@racket/tag[checked-procedure-check-and-extract]
+
                
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+@section{Regular expressions}
 
-@section{Input/Output}
+@racket/tag[byte-pregexp regexps]
+@racket/tag[byte-pregexp? regexps]
+@racket/tag[byte-regexp regexps]
+@racket/tag[byte-regexp? regexps]
+
+
+
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+@section{Input/Output and ports}
 
 @racket/tag[banner io optional]
+@racket/tag[byte-ready? io]
+@racket/tag[close-input-port io]
+@racket/tag[close-output-port io]
+
+
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -119,6 +266,47 @@ I pulled out the names with the following snippet:
 @;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+@section{Channels}
+@racket/tag[channel-put-evt channels]
+@racket/tag[channel-put-evt? channels]
+@racket/tag[channel? channels]
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Chaperones}
+@racket/tag[chaperone-box chaperones]
+@racket/tag[chaperone-continuation-mark-key chaperones]
+@racket/tag[chaperone-evt chaperones]
+@racket/tag[chaperone-hash chaperones]
+@racket/tag[chaperone-of? chaperones]
+@racket/tag[chaperone-procedure chaperones]
+@racket/tag[chaperone-prompt-tag chaperones]
+@racket/tag[chaperone-struct chaperones]
+@racket/tag[chaperone-struct-type chaperones]
+@racket/tag[chaperone-vector chaperones]
+@racket/tag[chaperone? chaperones]
+
+
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Runtime}
+@racket/tag[collect-garbage runtime gc optional]
+
+@;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+@section{Compilation}
+
+@racket/tag[compile compilation]
+@racket/tag[compile-allow-set!-undefined compilation]
+@racket/tag[compile-context-preservation-enabled compilation]
+@racket/tag[compile-enforce-module-constants compilation]
+@racket/tag[compile-syntax compilation]
+@racket/tag[compiled-expression? compilation]
+@racket/tag[compiled-module-expression? compilation]
+
+
+
 
 @section{Uncategorized}
 The following are things I haven't yet categorized yet.
@@ -127,151 +315,9 @@ The following are things I haven't yet categorized yet.
         ;; These names have been computed by using inspecting-kernel.rkt
         (map (lambda (s) (item (symbol->string s)))
              '(               
-               box-cas!
-               box-immutable
-               box?
-               break-enabled
-               break-thread
-               build-path
-               build-path/convention-type
-               byte-pregexp
-               byte-pregexp?
-               byte-ready?
-               byte-regexp
-               byte-regexp?
-               byte?
-               bytes
-               bytes->immutable-bytes
-               bytes->list
-               bytes->path
-               bytes->path-element
-               bytes->string/latin-1
-               bytes->string/locale
-               bytes->string/utf-8
-               bytes-append
-               bytes-close-converter
-               bytes-convert
-               bytes-convert-end
-               bytes-converter?
-               bytes-copy
-               bytes-copy!
-               bytes-fill!
-               bytes-length
-               bytes-open-converter
-               bytes-ref
-               bytes-set!
-               bytes-utf-8-index
-               bytes-utf-8-length
-               bytes-utf-8-ref
-               bytes<?
-               bytes=?
-               bytes>?
-               bytes?
-               caaaar
-               caaadr
-               caaar
-               caadar
-               caaddr
-               caadr
-               caar
-               cadaar
-               cadadr
-               cadar
-               caddar
-               cadddr
-               caddr
-               cadr
-               call-in-nested-thread
-               call-with-composable-continuation
-               call-with-continuation-barrier
-               call-with-continuation-prompt
-               call-with-current-continuation
-               call-with-escape-continuation
-               call-with-immediate-continuation-mark
-               call-with-input-file
-               call-with-output-file
-               call-with-semaphore
-               call-with-semaphore/enable-break
-               call-with-values
-               call/cc
-               call/ec
-               car
-               cdaaar
-               cdaadr
-               cdaar
-               cdadar
-               cdaddr
-               cdadr
-               cdar
-               cddaar
-               cddadr
-               cddar
-               cdddar
-               cddddr
-               cdddr
-               cddr
-               cdr
-               ceiling
-               channel-put-evt
-               channel-put-evt?
-               channel?
-               chaperone-box
-               chaperone-continuation-mark-key
-               chaperone-evt
-               chaperone-hash
-               chaperone-of?
-               chaperone-procedure
-               chaperone-prompt-tag
-               chaperone-struct
-               chaperone-struct-type
-               chaperone-vector
-               chaperone?
-               char->integer
-               char-alphabetic?
-               char-blank?
-               char-ci<=?
-               char-ci<?
-               char-ci=?
-               char-ci>=?
-               char-ci>?
-               char-downcase
-               char-foldcase
-               char-general-category
-               char-graphic?
-               char-iso-control?
-               char-lower-case?
-               char-numeric?
-               char-punctuation?
-               char-ready?
-               char-symbolic?
-               char-title-case?
-               char-titlecase
-               char-upcase
-               char-upper-case?
-               char-utf-8-length
-               char-whitespace?
-               char<=?
-               char<?
-               char=?
-               char>=?
-               char>?
-               char?
-               checked-procedure-check-and-extract
-               choice-evt
-               cleanse-path
-               close-input-port
-               close-output-port
-               collect-garbage
-               compile
-               compile-allow-set!-undefined
-               compile-context-preservation-enabled
-               compile-enforce-module-constants
-               compile-syntax
-               compiled-expression?
-               compiled-module-expression?
-               complete-path?
-               complex?
-               cons
+
+
+
                continuation-mark-key?
                continuation-mark-set->context
                continuation-mark-set->list
